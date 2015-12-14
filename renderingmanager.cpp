@@ -91,7 +91,7 @@ Texture* RenderingManager::createTexture(std::string path) {
 	return tempTexture;
 }
 
-void RenderingManager::clearScreen() {
+void RenderingManager::clearRenderer() {
 	SDL_RenderClear(gRenderer);
 }
 
@@ -113,7 +113,7 @@ void RenderingManager::renderTexture(Texture& texture, int x, int y, SDL_Rect* c
 	SDL_RenderCopyEx(gRenderer, texture.getTexture(), clip, &render_quad, angle, center, flip);
 }
 
-void RenderingManager::presentScreen() {
+void RenderingManager::presentToScreen() {
 	SDL_RenderPresent(gRenderer);
 
 }
