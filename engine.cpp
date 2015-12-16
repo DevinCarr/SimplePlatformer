@@ -21,7 +21,7 @@ bool Engine::init() {
 
         log.writeMessage("Initializing RenderingManager \n");
 
-        RenderingManager::getInstance();
+        RenderingManager::getInstance().init();
 
         Game::getInstance().init();
 

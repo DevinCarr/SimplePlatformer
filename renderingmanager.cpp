@@ -3,8 +3,6 @@
 RenderingManager::RenderingManager() {
     gWindow = nullptr;
     gRenderer = nullptr;
-
-    init();
 }
 
 RenderingManager::~RenderingManager() {
