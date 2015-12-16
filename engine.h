@@ -7,7 +7,7 @@
 #include "singleton.h"
 #include "texture.h"
 
-#include "SDL.h"
+#include "SDL2/SDL.h"
 
 #include "renderingmanager.h"
 #include "logger.h"
