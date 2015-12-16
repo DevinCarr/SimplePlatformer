@@ -20,8 +20,12 @@ public:
 
     void init();
 
-    SDL_Renderer* getRenderer() const { return gRenderer; }
-    SDL_Window* getWindow() const { return gWindow; }
+    SDL_Renderer* getRenderer() const {
+        return gRenderer;
+    }
+    SDL_Window* getWindow() const {
+        return gWindow;
+    }
 
     Texture* createTexture(std::string path);
 

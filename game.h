@@ -1,5 +1,9 @@
-#include "engine.h"
+#ifndef GAME_H_
+#define GAME_H_
+
 #include "player.h"
+#include "renderingmanager.h"
+
 class Game: public Singleton<Game> {
 public:
 
@@ -20,3 +24,5 @@ private:
     Player player;
 
 };
+
+#endif

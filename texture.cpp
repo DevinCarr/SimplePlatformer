@@ -85,7 +85,7 @@ SDL_Texture* Texture::getTexture() {
 }
 
 void Texture::setTexture(SDL_Texture* texture) {
-	mTexture = texture;
+    mTexture = texture;
 }
 int Texture::getWidth() {
     return mWidth;
@@ -96,9 +96,9 @@ int Texture::getHeight() {
 }
 
 void Texture::setHeight(int height) {
-	mHeight = height;
+    mHeight = height;
 }
 
 void Texture::setWidth(int width) {
-	mWidth = width;
+    mWidth = width;
 }

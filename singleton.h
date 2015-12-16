@@ -5,7 +5,7 @@ template <class T>
 class Singleton {
 public:
     static inline T& getInstance() {
-        if(!g_pInstance){
+        if(!g_pInstance) {
             g_pInstance = new T;
         }
         return *g_pInstance;

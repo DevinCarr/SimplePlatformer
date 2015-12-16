@@ -8,15 +8,15 @@
 
 class Player : public Entity {
 public:
-	Player();
-	~Player();
-	void setTexture(std::string path);
-	virtual void handleInput();
-	virtual void update();
-	virtual void render();
+    Player();
+    ~Player();
+    void setTexture(std::string path);
+    virtual void handleInput();
+    virtual void update();
+    virtual void render();
 private:
-	//Engine *engine;
-	Texture *texture;
+    //Engine *engine;
+    Texture *texture;
 
 };
 #endif //PLAYER_H_

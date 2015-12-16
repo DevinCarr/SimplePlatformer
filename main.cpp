@@ -1,9 +1,9 @@
-
 #include "engine.h"
+#include "game.h"
 
 int main(int argc, char** argv) {
 
-	Engine::getInstance();
+    Engine::getInstance();
 
-	return 0;
+    return 0;
 }

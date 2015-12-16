@@ -9,51 +9,33 @@ TODO:
        have been loaded. But not sure if I should take that approach or not.
 */
 
-void Game::init()
-{
-    Engine::getInstance();
+void Game::init() {
 
     player.setTexture("images/ball.png");
 
-    run();
+//    run();
 
 }
 
-void Game::run()
-{
-    //TODO: Have engine track running state
-    while(running) {
-        SDL_Event e;
-
-        while(SDL_PollEvent(&e)) {
-            if(e.type == SDL_QUIT) {
-                running= false;
-                destroy();
-                break;
-            }
-        }
-        render();
-    }
-}
-
-void Game::handleInput()
-{
+void Game::run() {
+    render();
 
 }
-void Game::update()
-{
+
+void Game::handleInput() {
 
 }
-void Game::render()
-{
+void Game::update() {
+
+}
+void Game::render() {
     RenderingManager::getInstance().clearRenderer();
     player.render();
     RenderingManager::getInstance().presentToScreen();
 }
 
-void Game::destroy()
-{
-    Engine::getInstance().destroy();
+void Game::destroy() {
+
 
 }
 
