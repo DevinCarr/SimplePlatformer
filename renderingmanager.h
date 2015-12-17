@@ -15,9 +15,6 @@ public:
     RenderingManager();
     ~RenderingManager();
 
-
-    RenderingManager& operator=(const RenderingManager&);
-
     void init();
 
     SDL_Renderer* getRenderer() const {

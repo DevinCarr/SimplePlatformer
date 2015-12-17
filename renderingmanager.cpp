@@ -8,13 +8,6 @@ RenderingManager::RenderingManager() {
 RenderingManager::~RenderingManager() {
 }
 
-RenderingManager& RenderingManager::operator=(const RenderingManager& right) {
-    gWindow = right.getWindow();
-    gRenderer = right.getRenderer();
-
-    return *this;
-
-}
 void RenderingManager::init() {
 
     log.openFile("renderingmanager_log.txt");
