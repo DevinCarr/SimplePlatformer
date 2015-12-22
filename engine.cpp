@@ -23,10 +23,14 @@ bool Engine::init() {
 
         RenderingManager::getInstance().init();
 
+        log.writeMessage("Initializing InputManager\n");
+        InputManager::getInstance().init();
+
+        log.writeMessage("Initializing Game\n");
         Game::getInstance().init();
 
     } else {
-        log.writeMessage("Error initializing SDL2\n");
+        log.writeMessage("Error initializing SDL2\n", 2);
         success = false;
     }
 
@@ -47,7 +51,10 @@ void Engine::run() {
                 running= false;
                 destroy();
                 break;
+            } else {
+                InputManager::getInstance().process(&e);
             }
+//            Game::getInstance().handleInput();
         }
         Game::getInstance().run();
     }

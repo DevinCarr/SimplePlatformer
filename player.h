@@ -1,10 +1,17 @@
 #ifndef PLAYER_H_
 #define PLAYER_H_
+
 #include "entity.h"
 
 #include "texture.h"
-
 #include "renderingmanager.h"
+#include "inputmanager.h"
+
+#include "vector2d.h"
+
+#include "SDL2/SDL.h"
+
+#include "iostream"
 
 class Player : public Entity {
 public:
@@ -15,8 +22,10 @@ public:
     virtual void update();
     virtual void render();
 private:
-    //Engine *engine;
     Texture *texture;
+
+    Vector2D position;
+    Vector2D velocity;
 
 };
 #endif //PLAYER_H_

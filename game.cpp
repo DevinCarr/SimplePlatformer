@@ -10,24 +10,25 @@ TODO:
 */
 
 void Game::init() {
-
     player.setTexture("images/ball.png");
-
-//    run();
-
 }
 
 void Game::run() {
+    handleInput();
+    update();
     render();
-
 }
 
 void Game::handleInput() {
+    player.handleInput();
 
 }
+
 void Game::update() {
+    player.update();
 
 }
+
 void Game::render() {
     RenderingManager::getInstance().clearRenderer();
     player.render();

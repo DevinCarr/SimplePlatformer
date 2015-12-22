@@ -3,6 +3,7 @@
 
 #include "vector2d.h"
 
+
 class Entity {
 public:
     virtual void handleInput() = 0;

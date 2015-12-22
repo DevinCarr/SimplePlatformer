@@ -24,7 +24,7 @@ void RenderingManager::init() {
         if (gRenderer) {
             log.writeMessage("successfully created renderer\n");
 
-            SDL_SetRenderDrawColor(gRenderer, 0x99, 0x99, 0x99, 0xFF);
+            SDL_SetRenderDrawColor(gRenderer, 0x00, 0x00, 0x00, 0xFF);
 
             int imgFlags = IMG_INIT_PNG;
             if (!(IMG_Init(imgFlags) & imgFlags)) {

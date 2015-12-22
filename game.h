@@ -3,6 +3,7 @@
 
 #include "player.h"
 #include "renderingmanager.h"
+#include "inputmanager.h"
 
 class Game: public Singleton<Game> {
 public:
