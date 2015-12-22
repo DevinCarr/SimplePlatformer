@@ -2,7 +2,7 @@
 #define INPUTMANAGER_H_
 
 #include "singleton.h"
-//#include <map>
+#include <map>
 
 #include "SDL2/SDL.h"
 
@@ -22,10 +22,10 @@ public:
 private:
     //Keys held on the current frame
 
-    bool heldKeys[512];
-    bool releasedKeys[512];
-//    std::map<SDL_Keysym, int> heldKeys;
-////    //Keys released on the current frame
-//    std::map<SDL_Keysym, int> releasedKeys;
+    /*bool heldKeys[512];
+    bool releasedKeys[512];*/
+    std::map<SDL_Keycode, bool> heldKeys;
+    //Keys released on the current frame
+    std::map<SDL_Keycode, bool> releasedKeys;
 };
 #endif // INPUTMANAGER_H_

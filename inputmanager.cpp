@@ -19,15 +19,11 @@ void InputManager::process(SDL_Event* e) {
 }
 
 void InputManager::clearReleased() {
-    for(int i = 0; i < 512; i++) {
-        releasedKeys[i] = false;
-    }
+    releasedKeys.clear();
 }
 
 void InputManager::clearHeld() {
-    for(int i = 0; i < 512; i++) {
-        heldKeys[i] = false;
-    }
+    heldKeys.clear();
 }
 
 bool InputManager::isHeld(SDL_Keycode key) {
