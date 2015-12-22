@@ -20,29 +20,29 @@ void Player::setTexture(std::string path) {
 
 void Player::handleInput() {
 
-    if(InputManager::getInstance().isHeld(SDLK_LEFT)){
+    if(InputManager::getInstance().isHeld(SDLK_LEFT)) {
         velocity.x -= 4;
     }
-    if(InputManager::getInstance().isHeld(SDLK_RIGHT)){
+    if(InputManager::getInstance().isHeld(SDLK_RIGHT)) {
         velocity.x += 4;
     }
-    if(InputManager::getInstance().isHeld(SDLK_UP)){
+    if(InputManager::getInstance().isHeld(SDLK_UP)) {
         velocity.y -= 4;
     }
-    if(InputManager::getInstance().isHeld(SDLK_DOWN)){
+    if(InputManager::getInstance().isHeld(SDLK_DOWN)) {
         velocity.y += 4;
     }
 
-    if(InputManager::getInstance().isReleased(SDLK_LEFT)){
+    if(InputManager::getInstance().isReleased(SDLK_LEFT)) {
         velocity.x = 0;
     }
-    if(InputManager::getInstance().isReleased(SDLK_RIGHT)){
+    if(InputManager::getInstance().isReleased(SDLK_RIGHT)) {
         velocity.x = 0;
     }
-    if(InputManager::getInstance().isReleased(SDLK_UP)){
+    if(InputManager::getInstance().isReleased(SDLK_UP)) {
         velocity.y = 0;
     }
-    if(InputManager::getInstance().isReleased(SDLK_DOWN)){
+    if(InputManager::getInstance().isReleased(SDLK_DOWN)) {
         velocity.y = 0;
     }
 //

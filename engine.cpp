@@ -57,6 +57,7 @@ void Engine::run() {
 //            Game::getInstance().handleInput();
         }
         Game::getInstance().run();
+        InputManager::getInstance().clearReleased();
     }
 }
 
