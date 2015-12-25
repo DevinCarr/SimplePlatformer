@@ -4,9 +4,15 @@
 #include <fstream>
 #include <string>
 
-#include "time.h"
+#include <ctime>
 
 #include <iostream>
+
+/*
+Set to 1 for any DEBUG messages to be sent to the output
+Set to 0 to remove only the DEBUG (logger.d()) messages from the log output
+*/
+#define LOGGING 1
 
 //using namespace std;
 class Log {
@@ -24,7 +30,10 @@ public:
     Log(std::string);
     void openFile(std::string fileName, std::fstream::openmode mode = std::fstream::in | std::fstream::out | std::fstream::trunc);
     void closeFile();
-    void writeMessage(std::string msg, int level = 0);
+    void writeMessage(std::string msg, loggingLevels level = 0);
+    void d(std:string msg);
+    void w(std::string msg);
+    void e(std::string msg);
 
 private:
     std::fstream logFile;

@@ -65,3 +65,34 @@ void Log::writeMessage(std::string msg, int level) {
     logFile << std::endl;
     logFile.flush();
 }
+
+void print_time() {
+    char* dt = ctime(time(NULL));
+    logFile << dt << " ";
+}
+
+// Debug message
+void Log::d(std::string msg) {
+    if (LOGGING) {
+	print_time();
+        logFile << "[DEBUG] ";
+        logFile << msg << std::endl;
+        logFile.flush();
+    }
+}
+
+// Warning message
+void Log::w(std::string msg) {
+    print_time();
+    logFile << "[WARN] ";
+    logFile << msg << std:
+    logFile.flush();
+}
+
+// Error message
+void Log::e(std::string msg) {
+    print_time();
+    logFile << "[ERROR] ";
+    logFile << msg << std:
+    logFile.flush();
+}
