@@ -1,35 +1,33 @@
 #include "logger.h"
 
 
-Log::Log() {}
+Log::Log() {
+    openFile();
+}
 
-Log::Log(std::string file) {
-    fileName = file;
-    openFile(fileName);
+Log::Log(std::string file): fileName(file) {
+    openFile();
 }
 Log::~Log() {
-//    closeFile();
-//    std::cout << "closing log" << std::endl;
+    closeFile();
 }
 
-Log::Log(const Log& log) {
-}
+void Log::openFile() {
+    time_t rawtime;
+    struct tm* timeinfo;
+    char buffer [80];
+    time(&rawtime);
+    timeinfo = localtime(&rawtime);
+    strftime(buffer,80,"%F",timeinfo);
+    fileName = std::string(buffer) + (fileName.size()?"_":"") + fileName + ".log";
+    std::cout << "Loading log file: " << fileName << std::endl;
 
-void Log::openFile(std::string file, std::ios_base::openmode mode) {
-    if(!logFile.is_open()) {
-        fileName = file;
-        std::cout << "Loading log file: " << fileName << std::endl;
+    logFile.open(fileName);
 
-        logFile.open(fileName, mode);
-
-        std::string border = "==============================================================\n";
-        std::string logMessage = "Begin Logging\n";
-//    std::cout << sizeof(border)/sizeof(char);
-        logFile.write(border.c_str(), border.size());
-        logFile.write(logMessage.c_str(), logMessage.size());
-        logFile.write(border.c_str(), border.size());
-        logFile.flush();
-    }
+    std::string border = "==============================================================\n";
+    std::string logMessage = "Begin Logging\n";
+    std::cout << border << logMessage;
+    logFile.flush();
 }
 void Log::closeFile() {
     if(logFile.is_open()) {
@@ -66,15 +64,20 @@ void Log::writeMessage(std::string msg, int level) {
     logFile.flush();
 }
 
-void print_time() {
-    char* dt = ctime(time(NULL));
-    logFile << dt << " ";
+std::string Log::print_time() {
+    struct tm* timeinfo;
+    time_t t;
+    time(&t);
+    char buffer[80];
+    timeinfo = localtime(&t);
+    strftime(buffer,80,"[%c]",timeinfo);
+    return buffer;
 }
 
 // Debug message
 void Log::d(std::string msg) {
     if (LOGGING) {
-	print_time();
+    	logFile << print_time();
         logFile << "[DEBUG] ";
         logFile << msg << std::endl;
         logFile.flush();
@@ -83,16 +86,16 @@ void Log::d(std::string msg) {
 
 // Warning message
 void Log::w(std::string msg) {
-    print_time();
-    logFile << "[WARN] ";
-    logFile << msg << std:
+    logFile << print_time();
+    logFile << "[WARN ] ";
+    logFile << msg << std::endl;
     logFile.flush();
 }
 
 // Error message
 void Log::e(std::string msg) {
-    print_time();
+    logFile << print_time();
     logFile << "[ERROR] ";
-    logFile << msg << std:
+    logFile << msg << std::endl;
     logFile.flush();
 }

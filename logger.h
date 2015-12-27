@@ -25,19 +25,20 @@ public:
     };
 
     Log();
-    Log(const Log&);
     ~Log();
     Log(std::string);
-    void openFile(std::string fileName, std::fstream::openmode mode = std::fstream::in | std::fstream::out | std::fstream::trunc);
+    void openFile();
     void closeFile();
-    void writeMessage(std::string msg, loggingLevels level = 0);
-    void d(std:string msg);
+    void writeMessage(std::string msg, int level = 0);
+    void d(std::string msg);
     void w(std::string msg);
     void e(std::string msg);
 
 private:
-    std::fstream logFile;
+    std::ofstream logFile;
     std::string fileName;
+    
+    std::string print_time();
 //    time_t timer;
 //    double seconds;
 };
