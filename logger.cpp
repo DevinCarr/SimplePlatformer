@@ -8,15 +8,18 @@ Log::Log() {
 Log::Log(std::string file): fileName(file) {
     openFile();
 }
+
 Log::~Log() {
     closeFile();
 }
 
+// Open the log file with <date>_fileName.log or <date>.log
 void Log::openFile() {
     time_t rawtime;
     struct tm* timeinfo;
     char buffer [80];
     time(&rawtime);
+    logger_time = rawtime;
     timeinfo = localtime(&rawtime);
     strftime(buffer,80,"%F",timeinfo);
     fileName = std::string(buffer) + (fileName.size()?"_":"") + fileName + ".log";
@@ -29,21 +32,21 @@ void Log::openFile() {
     std::cout << border << logMessage;
     logFile.flush();
 }
+
+// Close the currently open log file
 void Log::closeFile() {
     if(logFile.is_open()) {
         std::cout << "Closing log file: " << fileName << std::endl;
         std::string border = "==============================================================\n";
         std::string logMessage = "End Logging\n";
-
-        logFile.write(border.c_str(), border.size());
-        logFile.write(logMessage.c_str(), logMessage.size());
-        logFile.write(border.c_str(), border.size());
+        logFile << border << logMessage << border;
+	logFile.flush();
         logFile.close();
     }
 }
 
+// Old writeMessage command, please remove from your code and use the ones below
 void Log::writeMessage(std::string msg, int level) {
-//    logFile.write(msg, (sizeof(msg) / sizeof(char)) - 1);
     int year, day, month;
     int seconds, hours, minutes;
 
@@ -64,10 +67,19 @@ void Log::writeMessage(std::string msg, int level) {
     logFile.flush();
 }
 
+// Print the time string
+// Also checks for a new day to open a new log
 std::string Log::print_time() {
     struct tm* timeinfo;
     time_t t;
     time(&t);
+    // Check time
+    double diff_seconds = difftime(t,logger_time);
+    // If greater than a day old, open a new one.
+    if (diff_seconds >= 86400) {
+        closeFile();
+        openFile();
+    }
     char buffer[80];
     timeinfo = localtime(&t);
     strftime(buffer,80,"[%c]",timeinfo);
@@ -76,7 +88,7 @@ std::string Log::print_time() {
 
 // Debug message
 void Log::d(std::string msg) {
-    if (LOGGING) {
+    if (DEBUG) {
     	logFile << print_time();
         logFile << "[DEBUG] ";
         logFile << msg << std::endl;

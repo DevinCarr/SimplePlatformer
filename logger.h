@@ -3,18 +3,18 @@
 
 #include <fstream>
 #include <string>
-
 #include <ctime>
-
 #include <iostream>
 
 /*
 Set to 1 for any DEBUG messages to be sent to the output
 Set to 0 to remove only the DEBUG (logger.d()) messages from the log output
-*/
-#define LOGGING 1
+***Make sure to set this in your main file to get a DEBUG messages.
 
-//using namespace std;
+#define DEBUG 1
+
+*/
+
 class Log {
 public:
 
@@ -37,9 +37,7 @@ public:
 private:
     std::ofstream logFile;
     std::string fileName;
-    
+    time_t logger_time;    
     std::string print_time();
-//    time_t timer;
-//    double seconds;
 };
 #endif // LOGGER_H_
